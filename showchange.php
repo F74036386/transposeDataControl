@@ -20,6 +20,16 @@ include_once "config.php";
 session_start();
 echo "<br>";
 
+echo "<tr>";
+    echo "<td>填入此列新增資料</td>";
+    echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this',newLine','index')\"></textarea></td>";
+   
+    echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,'newLine','request')\"></textarea></td>";
+    
+    echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,'newLine','response')\"></textarea></td>";
+ 
+    echo "</tr>";
+
 $query="SELECT `id`,`index`,`request`,`response` FROM `".$sqlDataTable."` ORDER BY `index`";
 
 $result=mysqli_query($link,$query);

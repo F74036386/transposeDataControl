@@ -14,7 +14,7 @@ function commentChange(area,id,col){
 	oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	oXHR.onreadystatechange= function(){
 		if(oXHR.readyState==4 &&(oXHR.status==200||oXHR.status==304)){
-		//	alert(oXHR.responseText);
+			alert(oXHR.responseText);
 			//alert("dd");
 
 		}
@@ -30,7 +30,7 @@ function saveChange(){
 	oXHR.onreadystatechange= function(){
 		if(oXHR.readyState==4 &&(oXHR.status==200||oXHR.status==304)){
            // alert("您的變更已經儲存");
-			//alert(oXHR.responseText);
+			alert(oXHR.responseText);
 			showChange(nowpage);
 		}
 	}
@@ -51,6 +51,8 @@ function showChange(page){
 	}
 	oXHR.send(para);
 }
+
+
 </script>
 </head>
 <?php
@@ -76,6 +78,21 @@ include_once "config.php";
 <th style="width: 24vw">RESPONSE</th>
 </tr>
 <?php
+
+ echo "<tr>";
+    echo "<td>填入此列新增資料</td>";
+    echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,'newLine','index')\"></textarea></td>";
+   
+    echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,'newLine','request')\"></textarea></td>";
+    
+    echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,'newLine','response')\"></textarea></td>";
+ 
+    echo "</tr>";
+    
+
+
+
+
 $query="SELECT `id`,`index`,`request`,`response` FROM `".$sqlDataTable."` ORDER BY `index`";
 //echo $query;
 $result=mysqli_query($link,$query);
