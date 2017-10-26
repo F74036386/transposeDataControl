@@ -14,7 +14,7 @@ function commentChange(area,id,col){
 	oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	oXHR.onreadystatechange= function(){
 		if(oXHR.readyState==4 &&(oXHR.status==200||oXHR.status==304)){
-			alert(oXHR.responseText);
+			//alert(oXHR.responseText);
 			//alert("dd");
 
 		}
@@ -29,13 +29,29 @@ function saveChange(){
 	oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	oXHR.onreadystatechange= function(){
 		if(oXHR.readyState==4 &&(oXHR.status==200||oXHR.status==304)){
-           // alert("您的變更已經儲存");
-			alert(oXHR.responseText);
+            alert("您的變更已經儲存");
+			//alert(oXHR.responseText);
 			showChange(nowpage);
 		}
 	}
 	oXHR.send(para);
 }
+
+function deleteData(id){
+    var oXHR=new XMLHttpRequest();
+	para= "para=delete&id="+id;   // encodeURIComponent(para); URL編碼
+	oXHR.open("POST","deleteData.php",true);
+	oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	oXHR.onreadystatechange= function(){
+		if(oXHR.readyState==4 &&(oXHR.status==200||oXHR.status==304)){
+            alert("您的變更已經儲存");
+			//alert(oXHR.responseText);
+			showChange(nowpage);
+		}
+	}
+	oXHR.send(para);
+}
+
 
 function showChange(page){
     nowpage=page;
@@ -72,7 +88,7 @@ include_once "config.php";
 <div>
 <table border="1" style="width: 80vw; table-layout:fixed;">
 <tr>
-<th style="width: 4vw"></th>
+<th style="width: 10vw"></th>
 <th style="width: 16vw">INDEX</th>
 <th style="width: 24vw">REQUEST</th>
 <th style="width: 24vw">RESPONSE</th>
@@ -99,9 +115,11 @@ $result=mysqli_query($link,$query);
 //echo "<br>aaa".$result."bbb<br>";
 //echo(gettype($result));
 $rows=mysqli_fetch_array($result);
+
 while($rows){
     echo "<tr>";
-    echo "<td></td>";
+    $button="<input type=\"button\" style=\"background:rgba(70%,0%,0%,0.4)\" value=\"刪除此筆資料\" onclick=\"deleteData(".$rows[0].")\">";
+    echo "<td>".$button."</td>";
     echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,".$rows[0].",'index')\">".$rows[1]."</textarea></td>";
    
     echo "<td align='center'>"."<textarea onkeyup=\"commentChange(this,".$rows[0].",'request')\">".$rows[2]."</textarea></td>";
