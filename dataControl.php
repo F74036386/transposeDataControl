@@ -77,7 +77,7 @@ include_once "config.php";
 ?>
 <style>
 </style>
-<p class="title">DATA controler</p>
+<p class="title">DATA controller</p>
 <div id="table"><br>
 <div style="display: flex">
 <div style="width: 15vw">
