@@ -3,7 +3,7 @@ $host="140.116.245.148";
 $user="f74036386";
 $upwd="00000AAA";
 $db="f74036386";
-$sqlDataTable="TransposeData";
+$sqlDataTable="stateTransition";
 
 //$host="127.0.0.1";
 //$user="root";
