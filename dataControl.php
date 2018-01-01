@@ -81,7 +81,7 @@ include_once "config.php";
 <style>
 </style>
 <p class="title">DATA controller</p>
-<div id="table"><br>
+<div id="table">
 
 <?php
 include_once "showchange.php";
