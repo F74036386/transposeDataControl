@@ -41,7 +41,7 @@ $result=mysqli_query($link,$query);
 $rows=mysqli_fetch_array($result);
 while($rows){
     echo "<tr>";
-       $button="<input type=\"button\" style=\"background:rgba(80%,50%,0%,0.6)\" value=\"刪除此筆資料\" onchange=\"deleteData(".$rows[0].")\">";
+       $button="<input type=\"button\" style=\"background:rgba(80%,50%,0%,0.6)\" value=\"刪除此筆資料\" onclick=\"deleteData(".$rows[0].")\">";
     echo "<td>".$button."</td>";
     echo "<td align='center'>"."<textarea onchange=\"commentChange(this,".$rows[0].",'state')\">".$rows[1]."</textarea></td>";
    
